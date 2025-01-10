@@ -1,8 +1,8 @@
-import { baseEntity } from "../shared/baseEntity.entity";
+import { baseEntity } from "../shared/baseEntity.entity.js";
 
 export class MetodoPago extends baseEntity {
   constructor(
-    public codigo: string,
+    public codigo: string, // Por ahora no modificable.
     public activo: boolean = true,
     id?: number,
     createdAt?: Date,
@@ -13,11 +13,10 @@ export class MetodoPago extends baseEntity {
 
   desactivar() {
     this.activo = false;
-    this.updateTimestamp();
   }
 
   activar() {
     this.activo = true;
-    this.updateTimestamp();
   }
 }
+// Quite el update timeStamp de los metodos porque lo hace la DB.

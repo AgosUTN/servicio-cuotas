@@ -1,18 +1,20 @@
-import { Cuota } from "../cuota/cuota.entity";
-import { SancionMonetaria } from "../sancionMonetaria/sancionMonetaria.entity";
-import { baseEntity } from "../shared/baseEntity.entity";
+import { Cuota } from "../cuota/cuota.entity.js";
+import { baseEntity } from "../shared/baseEntity.entity.js";
 
 export class SocioFinanciero extends baseEntity {
   constructor(
-    public misCuotas: Cuota[] = [], // Si bien al finalizar el Alta socio debe tener 1 cuota, en el mientras tanto no tiene.
-    public misSancionesMonetarias: SancionMonetaria[] = [],
+    public misCuotas: null | Cuota[] = [], // Si bien al finalizar el Alta socio debe tener 1 cuota, en el mientras tanto no tiene.
     id: number, // No es opcional el ID porque lo crea el otro servicio.
     createdAt?: Date,
     updatedAt?: Date
   ) {
     super(id, createdAt, updatedAt);
   }
-  saludar(): string {
-    return `¡Hola, soy el socio con ID: ${this.id}!`;
+
+  setCuotas(cuotas: Cuota[]) {
+    this.misCuotas = cuotas;
+  }
+  getCuotas(): Cuota[] | null {
+    return this.misCuotas;
   }
 }

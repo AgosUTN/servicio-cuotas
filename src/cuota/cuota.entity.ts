@@ -1,4 +1,4 @@
-import { baseEntity } from "../shared/baseEntity.entity";
+import { baseEntity } from "../shared/baseEntity.entity.js";
 
 export class Cuota extends baseEntity {
   constructor(
@@ -16,7 +16,6 @@ export class Cuota extends baseEntity {
   }
   setFechaPago() {
     this.fechaPago = new Date();
-    this.updateTimestamp();
   }
 }
 
